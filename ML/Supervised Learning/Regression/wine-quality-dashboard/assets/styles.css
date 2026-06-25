@@ -1,0 +1,157 @@
+/* Main App */
+.main {
+    padding-top: 1rem;
+}
+
+/* Metric Cards */
+[data-testid="stMetric"] {
+    background-color: white;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+/* Tables */
+[data-testid="stDataFrame"] {
+    border-radius: 12px;
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+/* =========================
+   GLOBAL THEME
+========================= */
+
+body {
+    background-color: #0e1117;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Streamlit main container */
+.main {
+    background-color: #0e1117;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero-title {
+    font-size: 42px;
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    text-align: center;
+    color: #b5b5b5;
+    margin-bottom: 30px;
+}
+
+/* =========================
+   FEATURE CARDS
+========================= */
+
+.card {
+    background: linear-gradient(145deg, #1c1f26, #161a22);
+    border: 1px solid #2a2f3a;
+    border-radius: 14px;
+    padding: 18px;
+    height: 170px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border: 1px solid #4f8cff;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.card-text {
+    font-size: 14px;
+    color: #c7c7c7;
+    line-height: 1.4;
+}
+
+/* =========================
+   METRICS (Streamlit override)
+========================= */
+
+[data-testid="stMetric"] {
+    background-color: #6f9fbe;
+    border: 1px solid #2a2f3a;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+/* Metric value */
+[data-testid="stMetricValue"] {
+    color: black;
+    font-size: 22px;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+section[data-testid="stSidebar"] {
+    background-color: #11151c;
+    border-right: 1px solid #2a2f3a;
+}
+
+/* Sidebar text */
+section[data-testid="stSidebar"] * {
+    color: #ffffff;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.stButton > button {
+    background-color: #4f8cff;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 18px;
+    border: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.stButton > button:hover {
+    background-color: #2f6fff;
+    transform: scale(1.03);
+}
+
+/* =========================
+   DATAFRAME STYLE
+========================= */
+
+.dataframe {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+hr {
+    border: 1px solid #2a2f3a;
+}
