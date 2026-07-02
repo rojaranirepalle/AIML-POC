@@ -1,6 +1,6 @@
 import numpy as np
 
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split,GridSearchCV
 from sklearn.linear_model import (
     LinearRegression,
     Ridge,
@@ -9,13 +9,12 @@ from sklearn.linear_model import (
 )
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
-
 from sklearn.metrics import (
     mean_absolute_error,
     mean_squared_error,
     r2_score
 )
-
+import streamlit as st 
 from src.logger import logger
 from src.model_registry import save_model
 
@@ -30,10 +29,10 @@ def train_models(df):
         test_size=0.2,
         random_state=42
     )
-
+    
     models = {
         "Linear Regression": LinearRegression(),
-        "Ridge": Ridge(alpha=1.0),
+        "Ridge": Ridge(alpha=0.1),
         "Lasso": Lasso(alpha=0.1),
         "ElasticNet": ElasticNet(alpha=0.1)
     }
@@ -47,13 +46,26 @@ def train_models(df):
             StandardScaler(),
             model
         )
-        logger.info("Training started")
-        pipeline.fit(X_train, y_train)
+        if name=="Ridge":
+            grid = dict()
 
-        train_pred = pipeline.predict(X_train)
-        test_pred = pipeline.predict(X_test)
+            grid['ridge__alpha'] = np.arange(0.1,2.1,0.1)
+            search = GridSearchCV(estimator = pipeline, param_grid = grid, scoring = 'neg_mean_absolute_error',cv = 10, n_jobs= -1)
 
-        trained_models[name] = pipeline
+            logger.info("Training started")
+            search.fit(X_train, y_train)
+            #results = search.fit(X_train, y_train)
+            #st.write('MAE: %.3f' % results.best_score_)
+            #st.write('Config: %s' % results.best_params_)
+            train_pred = search.predict(X_train)
+            test_pred = search.predict(X_test)
+            trained_models[name] = search
+        else:   
+            pipeline.fit(X_train, y_train)
+            train_pred = pipeline.predict(X_train)
+            test_pred = pipeline.predict(X_test)
+
+            trained_models[name] = pipeline
 
         results[name] = {
             "Train": {
