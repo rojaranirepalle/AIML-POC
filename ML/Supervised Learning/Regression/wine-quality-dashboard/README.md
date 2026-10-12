@@ -1,6 +1,6 @@
 # Wine Quality AI Dashboard
 
-Machine Learning dashboard built with Streamlit.
+Machine Learning dashboard built with Dash (deployed on Vercel), with the original Streamlit version kept for local use.
 
 ## Features
 
@@ -22,6 +22,25 @@ Machine Learning dashboard built with Streamlit.
 
 ## Run
 
+Dash (same app that runs on Vercel):
+
 ```bash
-streamlit run app.py
+pip install -r requirements.txt
+python app.py
 ```
+
+Streamlit (local only):
+
+```bash
+pip install -r requirements-streamlit.txt
+streamlit run streamlit_app.py
+```
+
+## Deploy (Vercel)
+
+```bash
+vercel        # preview
+vercel --prod # production
+```
+
+Vercel picks up `app.py`, which exports the Dash Flask server as `app`.

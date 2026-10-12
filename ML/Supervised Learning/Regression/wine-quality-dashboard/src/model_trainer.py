@@ -14,9 +14,7 @@ from sklearn.metrics import (
     mean_squared_error,
     r2_score
 )
-import streamlit as st 
 from src.logger import logger
-from src.model_registry import save_model
 
 def train_models(df):
 
@@ -50,7 +48,7 @@ def train_models(df):
             grid = dict()
 
             grid['ridge__alpha'] = np.arange(0.1,2.1,0.1)
-            search = GridSearchCV(estimator = pipeline, param_grid = grid, scoring = 'neg_mean_absolute_error',cv = 10, n_jobs= -1)
+            search = GridSearchCV(estimator = pipeline, param_grid = grid, scoring = 'neg_mean_absolute_error',cv = 10, n_jobs=1)
 
             logger.info("Training started")
             search.fit(X_train, y_train)
@@ -80,15 +78,6 @@ def train_models(df):
             }
         }
         logger.info("Best model selected")
-    best_model_name = max(
-        results,
-        key=lambda x: results[x]["Test"]["R2"]
-    )
-
-    save_model(
-        trained_models[best_model_name]
-    )
-
     return trained_models, results, X
 
     

@@ -1,0 +1,161 @@
+/* =========================
+   DASH LAYOUT (Vercel build)
+========================= */
+
+body {
+    margin: 0;
+    background-color: #0e1117;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    background-color: #11151c;
+    border-right: 1px solid #2a2f3a;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.brand {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+
+.nav-link:hover {
+    background-color: #1c1f26;
+}
+
+.content {
+    flex: 1;
+    min-width: 0;
+    padding: 32px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 16px 0;
+}
+
+.col {
+    flex: 1 1 360px;
+    min-width: 0;
+}
+
+/* Metric Cards */
+.metric {
+    flex: 1 1 140px;
+    background-color: #6f9fbe;
+    border: 1px solid #2a2f3a;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.metric-label {
+    color: #0e1117;
+    font-size: 14px;
+}
+
+.metric-value {
+    color: black;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* Leaderboard cards */
+.card {
+    background: linear-gradient(145deg, #1c1f26, #161a22);
+    border: 1px solid #2a2f3a;
+    border-radius: 14px;
+    padding: 18px;
+    height: auto;
+}
+
+/* Alerts */
+.alert {
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin: 12px 0;
+}
+
+.alert-success { background: #173d2a; color: #8fe3b0; }
+.alert-warning { background: #3d3417; color: #f3d77a; }
+.alert-error   { background: #3d1a1a; color: #f39a9a; }
+.alert-info    { background: #172a3d; color: #8fc3f3; }
+
+details {
+    background: #161a22;
+    border: 1px solid #2a2f3a;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin: 12px 0;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Prediction form */
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+}
+
+.input label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #c7c7c7;
+}
+
+.input input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #2a2f3a;
+    background: #161a22;
+    color: #ffffff;
+}
+
+.btn {
+    background-color: #4f8cff;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 18px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2f6fff;
+}
+
+@media (max-width: 720px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: auto; border-right: none; border-bottom: 1px solid #2a2f3a; }
+    .content { padding: 16px; }
+}

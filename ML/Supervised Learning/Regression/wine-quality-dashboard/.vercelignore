@@ -1,0 +1,8 @@
+.venv
+__pycache__
+*.pyc
+pages/
+streamlit_app.py
+requirements-streamlit.txt
+models/*.pkl
+data/winequality-white.csv
